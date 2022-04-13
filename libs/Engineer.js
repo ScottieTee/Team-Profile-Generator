@@ -7,12 +7,12 @@ class Engineer extends Employee {
 
         this.username = username;
     }
-    getOfficeNumber() {
-        return this.officeNumber;
+    getGithubUser() {
+        return this.username;
     }
 
     getRole() {
-        return "Manager";
+        return "Engineer";
     }
 }
 
