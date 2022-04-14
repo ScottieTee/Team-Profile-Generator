@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
 const path = require('path');
+const OUTPUT_DIR = path.resolve("output");
+const outputPath = path.join(OUTPUT_DIR, "MyTeam.html");
 const Manager = require('./libs/Manager');
 const Engineer = require('./libs/Engineer');
 const Intern = require('./libs/Intern');
@@ -124,6 +126,10 @@ const promptIntern = () => {
 
 const buildTeam = () => {
     console.log('FINISH BUILDING MY TEAM!');
+    if(!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, generateHTML(teamMembers))
     
 
     //create an output directory?
