@@ -58,6 +58,37 @@ const promptMenu = () => {
         });
 };
 
+const promptEngineer = () => {
+    console.log ('ADD A NEW ENGINEER');
+
+    return inquirer.prompt([
+       {
+        type: 'input',
+         name: 'name',
+         message: 'Please enter the name of the engineer'
+        },
+        {
+         type: 'input',
+         name: 'employeeId',
+         message: 'Please enter the Employee ID of the engineer.'
+        },
+        {
+         type: 'input',
+         name: 'email',
+         message: 'Please enter the email address of the engineer'
+           },
+           {
+            type: 'input',
+            name: 'githubUser',
+            message: 'Please enter the GitHub username of the engineer'
+              },    
+    ]).then(answers => {
+        console.log(answers);
+        const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.githubUser);
+        teamMembers.push(engineer);
+        promptMenu();
+    })
+};
 const promptIntern = () => {
     console.log ('ADD A NEW INTERN');
 
@@ -80,12 +111,19 @@ const promptIntern = () => {
            {
             type: 'input',
             name: 'school',
-            message: 'Please enter the GitHub username of the intern'
+            message: 'Please enter the school of the intern'
               },    
     ]).then(answers => {
         console.log(answers);
-        const manager = new Intern(answers.name, answers.employeeId, answers.email, answers.school);
+        const intern = new Intern(answers.name, answers.employeeId, answers.email, answers.school);
         teamMembers.push(intern);
         promptMenu();
     })
 };
+
+const buildTeam = () => {
+    console.log('FINISH BUILDING MY TEAM!');
+    
+
+    //create an output directory?
+}
