@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
 const path = require('path');
+const generateSite = require('./generateHTML.js');
 const OUTPUT_DIR = path.resolve("output");
 const outputPath = path.join(OUTPUT_DIR, "MyTeam.html");
 const Manager = require('./libs/Manager');
@@ -125,28 +126,14 @@ const promptIntern = () => {
 };
 
 const buildTeam = () => {
-    console.log('FINISH BUILDING MY TEAM!');
+    console.log('FINISHED BUILDING YOUR TEAM!');
+    //output directory goes here
     if(!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
     }
-    fs.writeFileSync(outputPath, generateHTML(teamMembers))
+    fs.writeFileSync(outputPath, generateSite(teamMembers), "utf-8")
     
 
     //create an output directory?
-}
-const generateHTML = (answers) => {
-    return `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        //cdn of bootstrap
-        <title>Document</title>
-    </head>
-    <body>
-        //fill with info
-    </body>
-    </html>`
 }
 promptManager();
