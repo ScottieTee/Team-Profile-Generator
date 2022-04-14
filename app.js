@@ -1,9 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
 const path = require('path');
-const Manager = require('.lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Manager = require('./libs/Manager');
+const Engineer = require('./libs/Engineer');
+const Intern = require('./libs/Intern');
 const teamMembers = [];
 
 const promptManager = () => {
@@ -46,10 +46,10 @@ const promptMenu = () => {
         }])
         .then(userChoice => {
             switch(userChoice.menu) {
-                case "add an engineer":
+                case "Add an Engineer":
                 promptEngineer();
                 break;
-                case "add an intern":
+                case "Add an Intern":
                 promptIntern();
                 break;
             default:
@@ -87,6 +87,7 @@ const promptEngineer = () => {
         const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.githubUser);
         teamMembers.push(engineer);
         promptMenu();
+        //call generate HTML function
     })
 };
 const promptIntern = () => {
@@ -127,3 +128,19 @@ const buildTeam = () => {
 
     //create an output directory?
 }
+const generateHTML = (answers) => {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //cdn of bootstrap
+        <title>Document</title>
+    </head>
+    <body>
+        //fill with info
+    </body>
+    </html>`
+}
+promptManager();
