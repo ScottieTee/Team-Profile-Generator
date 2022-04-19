@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require("fs");
 const path = require('path');
 const generateSite = require('./generateHTML.js');
-const outputPath = path.join('./MyTeam.html');
+const outputPath = path.join('./output/MyTeam.html');
 const Manager = require('./libs/Manager');
 const Engineer = require('./libs/Engineer');
 const Intern = require('./libs/Intern');
@@ -127,27 +127,5 @@ const promptIntern = () => {
 const buildTeam = () => {
     console.log('FINISHED BUILDING YOUR TEAM!');
     fs.writeFileSync(outputPath, generateSite(teamMembers));
-    //output directory goes here
-    //create an output directory?
 }
-//const generateHTML = (answers) => {
-   // return `<!DOCTYPE html>
-    //<html lang="en">
-    //<head>
-       // <meta charset="UTF-8">
-       // <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       // <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       // <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.">
-       // <title>Team Profile Generator</title>
-   // </head>
-  //  <body>
-     //   <header>
-       // <h1>My Team</h1>
-       // </header>
-
-      //  <main> ${generateHTML(team)} </main>
-    
-  //  </body>
- //   </html>`
-//}
 promptManager();
